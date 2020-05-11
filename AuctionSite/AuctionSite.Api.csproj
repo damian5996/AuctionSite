@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuctionSite.Bl\AuctionSite.BL.csproj" />
+    <ProjectReference Include="..\AuctionSite.Shared\AuctionSite.Shared.csproj" />
+  </ItemGroup>
+
+
+</Project>
