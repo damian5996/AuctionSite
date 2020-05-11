@@ -1,6 +1,6 @@
 using System;
 
-namespace AuctionSite
+namespace AuctionSite.Api
 {
     public class WeatherForecast
     {
