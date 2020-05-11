@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+    <ProjectReference Include="..\AuctionSite.Bl\AuctionSite.BL.csproj" />
+    <ProjectReference Include="..\AuctionSite.Shared\AuctionSite.Shared.csproj" />
   </ItemGroup>
 
 

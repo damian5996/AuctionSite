@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Account\" />
+    <Folder Include="Auction\" />
+    <Folder Include="Category\" />
+    <Folder Include="Report\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuctionSite.DataAccess\AuctionSite.DataAccess.csproj" />
+    <ProjectReference Include="..\AuctionSite.Shared\AuctionSite.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
