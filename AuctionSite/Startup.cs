@@ -1,3 +1,4 @@
+using AuctionSite.BL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,9 @@ namespace AuctionSite.Api
                         Version = "v1"
                     });
             });
+
+            services
+                .BusinessLogicConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
