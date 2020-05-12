@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DbConnection\" />
     <Folder Include="Model\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
