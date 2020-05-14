@@ -26,5 +26,6 @@ namespace AuctionSite.DataAccess.Model
         public virtual Category Category { get; set; }
         public virtual User Owner { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
+        public virtual ICollection<Opinion> Opinions { get; set; }
     }
 }

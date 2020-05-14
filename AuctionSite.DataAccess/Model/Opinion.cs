@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace AuctionSite.DataAccess.Model
 {
@@ -13,5 +11,6 @@ namespace AuctionSite.DataAccess.Model
         public long AuctionId { get; set; }
 
         public virtual User Author { get; set; }
+        public virtual ICollection<UserOpinionThumb> UserOpinionThumbs { get; set; }
     }
 }

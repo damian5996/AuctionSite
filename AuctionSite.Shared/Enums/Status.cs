@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AuctionSite.Shared.Enums
+﻿namespace AuctionSite.Shared.Enums
 {
     public enum Status
     {
