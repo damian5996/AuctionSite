@@ -1,6 +1,6 @@
 ﻿namespace AuctionSite.Shared.Enums
 {
-    public enum Type
+    public enum ReportType
     {
         Abusement,
         Nudity,

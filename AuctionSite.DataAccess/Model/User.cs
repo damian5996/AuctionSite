@@ -1,7 +1,6 @@
 ﻿using AuctionSite.Shared.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AuctionSite.DataAccess.Model
 {
@@ -13,7 +12,7 @@ namespace AuctionSite.DataAccess.Model
         public string LastName { get; set; }
         public string MiddleNames { get; set; }
         public DateTime? BirthDate { get; set; }
-        public int FailedLoginAttempts { get; set; }
+        public short FailedLoginAttempts { get; set; }
         public Guid RecoveryGuid { get; set; }
         public string Username { get; set; }
         public DateTime CreationDate { get; set; }
@@ -30,5 +29,6 @@ namespace AuctionSite.DataAccess.Model
         public virtual ICollection<Auction> CreatedAuctions { get; set; }
         public virtual ICollection<Bid> Bids { get; set; }
         public virtual ICollection<ReportedAuction> ReportedAuctions { get; set; }
+        public virtual ICollection<Opinion> Opinions { get; set; }
     }
 }

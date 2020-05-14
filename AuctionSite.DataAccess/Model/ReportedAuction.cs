@@ -1,12 +1,11 @@
 ﻿using AuctionSite.Shared.Enums;
-using Type = AuctionSite.Shared.Enums.Type;
 
 namespace AuctionSite.DataAccess.Model
 {
     public class ReportedAuction
     {
         public long Id { get; set; }
-        public Type Type { get; set; }
+        public ReportType Type { get; set; }
         public string Description { get; set; }
         public ReportStatus Status { get; set; }
 

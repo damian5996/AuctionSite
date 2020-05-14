@@ -27,5 +27,7 @@ namespace AuctionSite.DataAccess.Model
         public virtual User Owner { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
         public virtual ICollection<Opinion> Opinions { get; set; }
+        public virtual ICollection<Bid> Bids { get; set; }
+        public virtual ICollection<ReportedAuction> Reports { get; set; }
     }
 }

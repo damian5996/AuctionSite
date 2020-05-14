@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AuctionSite.DataAccess.Model
+﻿namespace AuctionSite.DataAccess.Model
 {
     public class UserOpinionThumb
     {

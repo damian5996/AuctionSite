@@ -11,6 +11,7 @@ namespace AuctionSite.DataAccess.Model
         public long AuctionId { get; set; }
 
         public virtual User Author { get; set; }
+        public virtual Auction Auction { get; set; }
         public virtual ICollection<UserOpinionThumb> UserOpinionThumbs { get; set; }
     }
 }
