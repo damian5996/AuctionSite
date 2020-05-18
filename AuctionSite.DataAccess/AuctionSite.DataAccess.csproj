@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="DbConnection\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
