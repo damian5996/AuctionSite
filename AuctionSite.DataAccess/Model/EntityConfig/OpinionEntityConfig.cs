@@ -23,8 +23,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .HasOne(opinion => opinion.Author)
                 .WithMany(user => user.Opinions)
                 .HasForeignKey(opinion => opinion.AuthorId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(opinion => opinion.Auction)

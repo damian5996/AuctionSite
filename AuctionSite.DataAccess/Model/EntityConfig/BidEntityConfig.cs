@@ -12,6 +12,7 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
 
             builder
                 .Property(bid => bid.Price)
+                .HasColumnType("decimal(11,2)")
                 .IsRequired();
 
             builder
@@ -29,7 +30,7 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .HasOne(bid => bid.Auction)
                 .WithMany(auction => auction.Bids)
                 .HasForeignKey(bid => bid.AuctionId)
-                .IsRequired()
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

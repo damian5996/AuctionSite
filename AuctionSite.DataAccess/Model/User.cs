@@ -13,7 +13,7 @@ namespace AuctionSite.DataAccess.Model
         public string MiddleNames { get; set; }
         public DateTime? BirthDate { get; set; }
         public short FailedLoginAttempts { get; set; }
-        public Guid RecoveryGuid { get; set; }
+        public Guid? RecoveryGuid { get; set; }
         public string Username { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? DeletionDate { get; set; }

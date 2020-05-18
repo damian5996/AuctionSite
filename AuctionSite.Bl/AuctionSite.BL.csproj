@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AuctionSite.DataAccess\AuctionSite.DataAccess.csproj" />
     <ProjectReference Include="..\AuctionSite.Shared\AuctionSite.Shared.csproj" />
   </ItemGroup>

@@ -19,7 +19,7 @@ namespace AuctionSite.DataAccess.Model
 
         public long? BoughtById { get; set; }
         public int? CategoryId { get; set; }
-        public long OwnerId { get; set; }
+        public long? OwnerId { get; set; }
 
         public virtual User BoughtBy { get; set; }
         public virtual Category Category { get; set; }
