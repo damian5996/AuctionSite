@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AuctionSite.DataAccess.Model.EntityConfig
@@ -10,7 +7,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(user => user.Id);
+            builder
+                .HasKey(user => user.Id);
 
             builder
                 .Property(user => user.Email)

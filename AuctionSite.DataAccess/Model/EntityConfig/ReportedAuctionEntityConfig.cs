@@ -7,7 +7,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<ReportedAuction> builder)
         {
-            builder.HasKey(reportedAuction => reportedAuction.Id);
+            builder
+                .HasKey(reportedAuction => reportedAuction.Id);
 
             builder
                 .Property(reportedAuction => reportedAuction.Type)
@@ -22,13 +23,15 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .Property(reportedAuction => reportedAuction.Status)
                 .IsRequired();
 
-            builder.HasOne(reportedAuction => reportedAuction.Reporter)
+            builder
+                .HasOne(reportedAuction => reportedAuction.Reporter)
                 .WithMany(user => user.ReportedAuctions)
                 .HasForeignKey(reportedAuction => reportedAuction.ReporterId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(reportedAuction => reportedAuction.Auction)
+            builder
+                .HasOne(reportedAuction => reportedAuction.Auction)
                 .WithMany(auction => auction.Reports)
                 .HasForeignKey(reportedAuction => reportedAuction.AuctionId)
                 .IsRequired()

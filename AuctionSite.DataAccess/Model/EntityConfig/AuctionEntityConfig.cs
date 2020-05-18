@@ -7,7 +7,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Auction> builder)
         {
-            builder.HasKey(auction => auction.Id);
+            builder
+                .HasKey(auction => auction.Id);
 
             builder
                 .Property(auction => auction.Title)
@@ -47,19 +48,22 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .Property(auction => auction.LastModificationDate)
                 .IsRequired(false);
 
-            builder.HasOne(auction => auction.BoughtBy)
+            builder
+                .HasOne(auction => auction.BoughtBy)
                 .WithMany(user => user.BoughtAuctions)
                 .HasForeignKey(auction => auction.BoughtById)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(auction => auction.Owner)
+            builder
+                .HasOne(auction => auction.Owner)
                 .WithMany(user => user.CreatedAuctions)
                 .HasForeignKey(auction => auction.OwnerId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(auction => auction.Category)
+            builder
+                .HasOne(auction => auction.Category)
                 .WithMany(category => category.Auctions)
                 .HasForeignKey(auction => auction.CategoryId)
                 .IsRequired(false)

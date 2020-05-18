@@ -1,6 +1,6 @@
 ﻿namespace AuctionSite.Shared.Enums
 {
-    public enum Status
+    public enum AuctionStatus
     {
         Unspecified = 0,
         Draft = 1,

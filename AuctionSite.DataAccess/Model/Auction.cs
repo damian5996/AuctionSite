@@ -1,7 +1,6 @@
 ﻿using AuctionSite.Shared.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AuctionSite.DataAccess.Model
 {
@@ -12,7 +11,7 @@ namespace AuctionSite.DataAccess.Model
         public string Description { get; set; }
         public bool? IsBidType { get; set; }
         public decimal? Price { get; set; }
-        public Status Status { get; set; }
+        public AuctionStatus Status { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }

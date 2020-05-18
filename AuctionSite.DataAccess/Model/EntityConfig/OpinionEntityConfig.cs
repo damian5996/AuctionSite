@@ -7,7 +7,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Opinion> builder)
         {
-            builder.HasKey(opinion => opinion.Id);
+            builder
+                .HasKey(opinion => opinion.Id);
 
             builder
                 .Property(opinion => opinion.Content)
@@ -18,13 +19,15 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .Property(opinion => opinion.Rate)
                 .IsRequired();
 
-            builder.HasOne(opinion => opinion.Author)
+            builder
+                .HasOne(opinion => opinion.Author)
                 .WithMany(user => user.Opinions)
                 .HasForeignKey(opinion => opinion.AuthorId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(opinion => opinion.Auction)
+            builder
+                .HasOne(opinion => opinion.Auction)
                 .WithMany(auction => auction.Opinions)
                 .HasForeignKey(opinion => opinion.AuctionId)
                 .IsRequired()

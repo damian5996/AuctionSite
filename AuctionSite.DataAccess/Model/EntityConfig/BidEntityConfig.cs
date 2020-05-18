@@ -7,7 +7,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Bid> builder)
         {
-            builder.HasKey(bid => bid.Id);
+            builder
+                .HasKey(bid => bid.Id);
 
             builder
                 .Property(bid => bid.Price)
@@ -17,13 +18,15 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .Property(bid => bid.Timestamp)
                 .IsRequired();
 
-            builder.HasOne(bid => bid.User)
+            builder
+                .HasOne(bid => bid.User)
                 .WithMany(user => user.Bids)
                 .HasForeignKey(bid => bid.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(bid => bid.Auction)
+            builder
+                .HasOne(bid => bid.Auction)
                 .WithMany(auction => auction.Bids)
                 .HasForeignKey(bid => bid.AuctionId)
                 .IsRequired()

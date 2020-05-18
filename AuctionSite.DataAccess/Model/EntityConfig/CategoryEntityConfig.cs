@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace AuctionSite.DataAccess.Model.EntityConfig
 {
@@ -8,14 +7,16 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasKey(category => category.Id);
+            builder
+                .HasKey(category => category.Id);
 
             builder
                 .Property(category => category.Name)
                 .IsRequired()
                 .HasMaxLength(128);
 
-            builder.HasOne(category => category.Parent)
+            builder
+                .HasOne(category => category.Parent)
                 .WithMany(category => category.Children)
                 .HasForeignKey(category => category.ParentId)
                 .IsRequired(false)
