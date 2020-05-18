@@ -1,4 +1,5 @@
 ﻿using AuctionSite.DataAccess;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,11 +7,17 @@ namespace AuctionSite.BL
 {
     public static class BusinessLogicStartupExtensions
     {
-        public static IServiceCollection BusinessLogicConfiguration(this IServiceCollection services,
+        public static IServiceCollection BusinessLogicConfigureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             return services
-                .DataAccessConfiguration(configuration);
+                .DataAccessConfigureServices(configuration);
+        }
+
+        public static IApplicationBuilder BusinessLogicConfigure(this IApplicationBuilder app)
+        {
+            return app
+                .DataAccessConfigure();
         }
     }
 }

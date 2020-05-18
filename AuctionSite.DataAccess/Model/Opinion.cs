@@ -7,7 +7,7 @@ namespace AuctionSite.DataAccess.Model
         public long Id { get; set; }
         public string Content { get; set; }
         public short Rate { get; set; }
-        public long AuthorId { get; set; }
+        public long? AuthorId { get; set; }
         public long AuctionId { get; set; }
 
         public virtual User Author { get; set; }

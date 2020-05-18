@@ -26,6 +26,7 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
 
             builder
                 .Property(auction => auction.Price)
+                .HasColumnType("decimal(11,2)")
                 .IsRequired(false);
 
             builder
@@ -59,8 +60,8 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
                 .HasOne(auction => auction.Owner)
                 .WithMany(user => user.CreatedAuctions)
                 .HasForeignKey(auction => auction.OwnerId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(auction => auction.Category)
