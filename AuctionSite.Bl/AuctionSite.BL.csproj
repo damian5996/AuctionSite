@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Account\" />
+    <Folder Include="User\" />
     <Folder Include="Auction\" />
     <Folder Include="Category\" />
     <Folder Include="Report\" />
