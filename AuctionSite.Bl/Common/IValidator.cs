@@ -1,6 +1,6 @@
 ﻿namespace AuctionSite.BL.Common
 {
-    internal interface IValidator<in TParam>
+    public interface IValidator<in TParam>
     {
         void Validate(TParam param);
     }

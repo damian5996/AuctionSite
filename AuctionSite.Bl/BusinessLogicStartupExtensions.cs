@@ -1,4 +1,6 @@
-﻿using AuctionSite.DataAccess;
+﻿using AuctionSite.BL.User;
+using AuctionSite.BL.User.Interface;
+using AuctionSite.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +13,14 @@ namespace AuctionSite.BL
             IConfiguration configuration)
         {
             return services
-                .DataAccessConfigureServices(configuration);
+                .DataAccessConfigureServices(configuration)
+                .AddBusinessLogicDependencies();
+        }
+
+        public static IServiceCollection AddBusinessLogicDependencies(this IServiceCollection services)
+        {
+            return services
+                .AddScoped<IUserFacebookAuthenticationBusinessLogic, UserFacebookAuthenticationBusinessLogic>();
         }
 
         public static IApplicationBuilder BusinessLogicConfigure(this IApplicationBuilder app)

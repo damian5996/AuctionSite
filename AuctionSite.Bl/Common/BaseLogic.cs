@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.Common
 {
-    internal abstract class BaseLogic<TExecution, TResult>
+    public abstract class BaseLogic<TExecution, TResult>
     {
         protected readonly IUnitOfWork UnitOfWork;
         protected readonly IMapper Mapper;

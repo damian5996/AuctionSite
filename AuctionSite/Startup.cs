@@ -1,4 +1,5 @@
 using AuctionSite.BL;
+using AuctionSite.Shared;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +32,8 @@ namespace AuctionSite.Api
             });
 
             services
-                .BusinessLogicConfigureServices(Configuration);
+                .BusinessLogicConfigureServices(Configuration)
+                .SharedConfigureServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

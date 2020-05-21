@@ -12,5 +12,11 @@
             public const string Default = "Something went wrong!";
             public const string Fatal = "Fatal error!";
         }
+
+        public static class Configuration
+        {
+            public const string FacebookAuthRoot = "facebook-auth";
+            public const string FacebookApiConfigurationRoot = "facebook-api-configuration";
+        }
     }
 }
