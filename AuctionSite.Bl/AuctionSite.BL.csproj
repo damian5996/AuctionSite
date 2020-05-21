@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Account\" />
     <Folder Include="Auction\" />
     <Folder Include="Category\" />
     <Folder Include="Report\" />
+    <Folder Include="User\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
