@@ -1,5 +1,4 @@
 ﻿using AuctionSite.Shared;
-using AuctionSite.Shared.Enums;
 using AuctionSite.Shared.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 

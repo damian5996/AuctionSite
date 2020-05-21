@@ -1,8 +1,5 @@
 ﻿using AuctionSite.DataAccess.DbConnection;
 using AuctionSite.DataAccess.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AuctionSite.DataAccess

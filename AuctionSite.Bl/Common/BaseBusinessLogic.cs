@@ -2,11 +2,7 @@
 using AuctionSite.Shared.ViewModel;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AuctionSite.BL.Common
