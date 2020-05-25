@@ -12,15 +12,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AuctionSite.Shared.Enums;
+using AuctionSite.Shared.Exceptions;
 
 namespace AuctionSite.BL.User
 {
-    public class UserFacebookAuthenticationBusinessLogic : BaseBusinessLogic<FacebookLoginBindingModel, TokenDto, TokenViewModel>, IUserFacebookAuthenticationBusinessLogic
+    internal class UserFacebookAuthenticationLogic : BaseBusinessLogic<FacebookLoginBindingModel, TokenDto, TokenViewModel>, IUserFacebookAuthenticationLogic
     {
         private readonly IFacebookApiRepository _facebookApiRepository;
         private readonly GetUserByEmail _getUserByEmail;
 
-        public UserFacebookAuthenticationBusinessLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger<UserFacebookAuthenticationBusinessLogic> logger,
+        public UserFacebookAuthenticationLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger<UserFacebookAuthenticationLogic> logger,
             IFacebookApiRepository facebookApiRepository) : base(unitOfWork, mapper, logger)
         {
             _facebookApiRepository = facebookApiRepository;
@@ -35,7 +37,7 @@ namespace AuctionSite.BL.User
 
             if (!isTokenValid)
             {
-                throw new UnauthorizedAccessException();
+                throw new BusinessLogicException("", ExceptionType.Unauthorized);
             }
 
             var facebookUserDto = await _facebookApiRepository.GetUserInfoAsync(parameter.Token);

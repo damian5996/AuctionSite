@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.Common
 {
-    public abstract class BaseBusinessLogic<TExecution, TResult> : BaseLogic<TExecution, TResult>
+    internal abstract class BaseBusinessLogic<TExecution, TResult> : BaseLogic<TExecution, TResult>
     {
         protected BaseBusinessLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger logger) : base(unitOfWork, mapper, logger)
         {
@@ -22,7 +22,7 @@ namespace AuctionSite.BL.Common
         }
     }
 
-    public abstract class BaseBusinessLogic<TParam, TExecution, TResult> : BaseLogic<TExecution, TResult>
+    internal abstract class BaseBusinessLogic<TParam, TExecution, TResult> : BaseLogic<TExecution, TResult>
     {
         protected BaseBusinessLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger logger) : base(unitOfWork, mapper, logger)
         {

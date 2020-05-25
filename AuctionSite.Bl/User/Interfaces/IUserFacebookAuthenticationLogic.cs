@@ -4,7 +4,7 @@ using AuctionSite.Shared.ViewModel;
 
 namespace AuctionSite.BL.User.Interfaces
 {
-    public interface IUserFacebookAuthenticationBusinessLogic : IBusinessLogic<FacebookLoginBindingModel, TokenViewModel>
+    public interface IUserFacebookAuthenticationLogic : IBusinessLogic<FacebookLoginBindingModel, TokenViewModel>
     {
     }
 }

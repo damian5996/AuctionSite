@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.Common
 {
-    public abstract class BaseLogic<TExecution, TResult>
+    internal abstract class BaseLogic<TExecution, TResult>
     {
         protected readonly IUnitOfWork UnitOfWork;
         protected readonly IMapper Mapper;
@@ -50,7 +50,7 @@ namespace AuctionSite.BL.Common
                 return new ResultViewModel<TResult>
                 {
                     Error = Constants.Error.Default,
-                    ExceptionType = ExceptionType.Unauthorized
+                    ExceptionType = ExceptionType.Forbidden
                 };
             }
             catch (Exception ex)

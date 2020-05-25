@@ -8,9 +8,9 @@ namespace AuctionSite.Api.Controllers
     public class UserController : BaseApiController
     {
         private readonly IRegisterUserLogic _registerUserLogic;
-        private readonly IUserFacebookAuthenticationBusinessLogic _userFacebookAuthenticationBusinessLogic;
+        private readonly IUserFacebookAuthenticationLogic _userFacebookAuthenticationBusinessLogic;
 
-        public UserController(IRegisterUserLogic registerUserLogic, IUserFacebookAuthenticationBusinessLogic userFacebookAuthenticationBusinessLogic)
+        public UserController(IRegisterUserLogic registerUserLogic, IUserFacebookAuthenticationLogic userFacebookAuthenticationBusinessLogic)
         {
             _registerUserLogic = registerUserLogic;
             _userFacebookAuthenticationBusinessLogic = userFacebookAuthenticationBusinessLogic;

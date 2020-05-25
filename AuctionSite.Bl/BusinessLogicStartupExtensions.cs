@@ -20,7 +20,7 @@ namespace AuctionSite.BL
         public static IServiceCollection AddBusinessLogicDependencies(this IServiceCollection services)
         {
             return services
-                .AddScoped<IUserFacebookAuthenticationBusinessLogic, UserFacebookAuthenticationBusinessLogic>()
+                .AddScoped<IUserFacebookAuthenticationLogic, UserFacebookAuthenticationLogic>()
                 .AddScoped<IRegisterUserLogic, RegisterUserLogic>();
         }
 

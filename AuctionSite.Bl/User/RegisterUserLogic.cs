@@ -15,7 +15,7 @@ namespace AuctionSite.BL.User
 {
     internal class RegisterUserLogic : BaseBusinessLogic<RegisterUserBindingModel, UserDto, long>, IRegisterUserLogic
     {
-        public RegisterUserLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger logger) : base(unitOfWork, mapper, logger)
+        public RegisterUserLogic(IUnitOfWork unitOfWork, IMapper mapper, ILogger<RegisterUserLogic> logger) : base(unitOfWork, mapper, logger)
         {
         }
 
