@@ -11,6 +11,8 @@
         {
             public const string Default = "Something went wrong!";
             public const string Fatal = "Fatal error!";
+
+            public const string NotFoundTemplate = "{0} [{1}] not found!";
         }
 
         public static class Configuration

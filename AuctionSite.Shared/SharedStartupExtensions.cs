@@ -20,7 +20,8 @@ namespace AuctionSite.Shared
             IConfiguration configuration)
         {
             return services
-                .AddSingleton(configuration.GetSection(Constants.Configuration.FacebookApiConfigurationRoot).Get<FacebookApiConfiguration>());
+                .AddSingleton(configuration.GetSection(Constants.Configuration.FacebookApiConfigurationRoot)
+                    .Get<FacebookApiConfiguration>());
         }
 
         public static IServiceCollection AddMapper(this IServiceCollection services)

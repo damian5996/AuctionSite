@@ -1,10 +1,12 @@
 ﻿using AuctionSite.DataAccess.Repositories.Interfaces;
 using AuctionSite.Shared.Configuration;
+using AuctionSite.Shared.Dto.Facebook;
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AuctionSite.Shared.Dto;
 
 namespace AuctionSite.DataAccess.Repositories
 {
@@ -17,22 +19,64 @@ namespace AuctionSite.DataAccess.Repositories
             _facebookApiConfiguration = facebookApiConfiguration;
         }
 
-        public async Task<bool> ValidateToken(string token)
+        public async Task<bool> ValidateTokenAsync(string authToken)
         {
             var url = _facebookApiConfiguration.BaseUrl + string.Format(
-                          _facebookApiConfiguration.ValidateTokenMethodPathTemplate, token,
+                          _facebookApiConfiguration.ValidateTokenMethodPathTemplate, authToken,
                           _facebookApiConfiguration.AccessToken);
 
-            using var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(_facebookApiConfiguration.BaseUrl);
+            using var httpClient = new HttpClient {BaseAddress = new Uri(_facebookApiConfiguration.BaseUrl)};
 
             var result = await httpClient.GetAsync(url);
 
             result.EnsureSuccessStatusCode();
 
-            var facebookUserId = await JsonSerializer.DeserializeAsync<FacebookRequestResultDto<FacebookUserIdDto>>(await result.Content.ReadAsStreamAsync());
+            var facebookResult = await JsonSerializer.DeserializeAsync<FacebookRequestResultDto<FacebookSimpleUserDto>>(await result.Content.ReadAsStreamAsync());
 
-            return facebookUserId.Content.IsValidated;
+            return facebookResult.Content.IsValidated;
+        }
+
+        public async Task<FacebookUserDto> GetUserInfoAsync(string authToken)
+        {
+            var url = _facebookApiConfiguration.BaseUrl +
+                      string.Format(_facebookApiConfiguration.GetUserMethodPathTemplate, authToken);
+
+            url = AddAccessProof(url, authToken);
+
+            using var httpClient = new HttpClient {BaseAddress = new Uri(_facebookApiConfiguration.BaseUrl)};
+
+            var result = await httpClient.GetAsync(url);
+            var test = await result.Content.ReadAsStringAsync();
+            result.EnsureSuccessStatusCode();
+
+            var facebookUserDto =
+                await JsonSerializer.DeserializeAsync<FacebookUserDto>(
+                    await result.Content.ReadAsStreamAsync());
+
+            return facebookUserDto;
+        }
+
+        private string AddAccessProof(string url, string authToken)
+        {
+            return $"{url}&appsecret_proof={GetFacebookAppSecretProof(authToken)}";
+        }
+
+        private string GetFacebookAppSecretProof(string authToken)
+        {
+            var keyBytes = Encoding.UTF8.GetBytes(_facebookApiConfiguration.AppSecret);
+            var messageBytes = Encoding.UTF8.GetBytes(authToken);
+            
+            using var sha256 = new HMACSHA256(keyBytes);
+
+            var hash = sha256.ComputeHash(messageBytes);
+            
+
+            var sbHash = new StringBuilder();
+            foreach (var c in hash)
+            {
+                sbHash.Append(c.ToString("x2"));
+            }
+            return sbHash.ToString();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AuctionSite.Shared.Dto
+namespace AuctionSite.Shared.Dto.Facebook
 {
     public class FacebookRequestResultDto<T>
     {

@@ -32,6 +32,7 @@ namespace AuctionSite.Api
             });
 
             services
+                .ConfigureCustomAuth(Configuration)
                 .BusinessLogicConfigureServices(Configuration)
                 .SharedConfigureServices(Configuration);
         }

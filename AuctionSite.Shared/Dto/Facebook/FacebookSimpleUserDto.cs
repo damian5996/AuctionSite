@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AuctionSite.Shared.Dto
+namespace AuctionSite.Shared.Dto.Facebook
 {
-    public class FacebookUserIdDto
+    public class FacebookSimpleUserDto
     {
         [JsonPropertyName("user_id")]
         public string UserId { get; set; }
