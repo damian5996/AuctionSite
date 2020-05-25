@@ -3,6 +3,7 @@ using AuctionSite.Shared.ViewModel;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AuctionSite.BL.Common

@@ -1,9 +1,10 @@
 ﻿using AuctionSite.BL.User;
-using AuctionSite.BL.User.Interface;
+using AuctionSite.BL.User.Interfaces;
 using AuctionSite.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace AuctionSite.BL
 {
@@ -20,7 +21,8 @@ namespace AuctionSite.BL
         public static IServiceCollection AddBusinessLogicDependencies(this IServiceCollection services)
         {
             return services
-                .AddScoped<IUserFacebookAuthenticationBusinessLogic, UserFacebookAuthenticationBusinessLogic>();
+                .AddScoped<IUserFacebookAuthenticationBusinessLogic, UserFacebookAuthenticationBusinessLogic>()
+                .AddScoped<IRegisterUserLogic, RegisterUserLogic>();
         }
 
         public static IApplicationBuilder BusinessLogicConfigure(this IApplicationBuilder app)

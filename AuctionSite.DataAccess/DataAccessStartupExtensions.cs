@@ -18,7 +18,7 @@ namespace AuctionSite.DataAccess
                 .AddDataAccessDependencies();
         }
 
-        public static IServiceCollection DatabaseConnectionConfiguration(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection DatabaseConnectionConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             return services
                 .AddDbContext<AuctionSiteDbContext>(options => options.UseSqlServer(configuration.GetConnectionString(Constants.Database.DefaultConnectionString)));
