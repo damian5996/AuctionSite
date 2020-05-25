@@ -1,7 +1,10 @@
-﻿using AuctionSite.DataAccess;
+﻿using AuctionSite.BL.User;
+using AuctionSite.BL.User.Interfaces;
+using AuctionSite.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace AuctionSite.BL
 {
@@ -11,7 +14,8 @@ namespace AuctionSite.BL
             IConfiguration configuration)
         {
             return services
-                .DataAccessConfigureServices(configuration);
+                .DataAccessConfigureServices(configuration)
+                .AddScoped<IRegisterUserLogic, RegisterUserLogic>();
         }
 
         public static IApplicationBuilder BusinessLogicConfigure(this IApplicationBuilder app)

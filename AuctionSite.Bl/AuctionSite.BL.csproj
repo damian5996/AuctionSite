@@ -8,7 +8,6 @@
     <Folder Include="Auction\" />
     <Folder Include="Category\" />
     <Folder Include="Report\" />
-    <Folder Include="User\" />
   </ItemGroup>
 
   <ItemGroup>

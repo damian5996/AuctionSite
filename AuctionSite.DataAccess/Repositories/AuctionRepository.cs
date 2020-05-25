@@ -1,6 +1,8 @@
-﻿namespace AuctionSite.DataAccess.Repositories
+﻿using AuctionSite.DataAccess.Repositories.Interfaces;
+
+namespace AuctionSite.DataAccess.Repositories
 {
-    public class AuctionRepository
+    public class AuctionRepository : IAuctionRepository
     {
     }
 }
