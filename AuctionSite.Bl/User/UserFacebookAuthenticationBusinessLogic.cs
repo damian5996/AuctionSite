@@ -1,6 +1,6 @@
-﻿using System;
-using AuctionSite.BL.Common;
-using AuctionSite.BL.User.Interface;
+﻿using AuctionSite.BL.Common;
+using AuctionSite.BL.User.Interfaces;
+using AuctionSite.BL.User.Internal;
 using AuctionSite.DataAccess;
 using AuctionSite.DataAccess.Repositories.Interfaces;
 using AuctionSite.Shared.BindingModel;
@@ -8,10 +8,10 @@ using AuctionSite.Shared.Dto;
 using AuctionSite.Shared.ViewModel;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AuctionSite.BL.User.Internal;
 
 namespace AuctionSite.BL.User
 {

@@ -1,9 +1,6 @@
 ﻿using AuctionSite.BL.User.Interfaces;
 using AuctionSite.Shared.BindingModel;
-using AuctionSite.Shared.Dto;
-using AuctionSite.Shared.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace AuctionSite.Api.Controllers
