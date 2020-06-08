@@ -2,10 +2,12 @@
 using AuctionSite.DataAccess.Repositories;
 using AuctionSite.DataAccess.Repositories.Interfaces;
 using AuctionSite.Shared;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace AuctionSite.DataAccess
 {
@@ -14,8 +16,14 @@ namespace AuctionSite.DataAccess
         public static IServiceCollection DataAccessConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             return services
+                .AddMapper()
                 .DatabaseConnectionConfiguration(configuration)
                 .AddDataAccessDependencies();
+        }
+
+        public static IServiceCollection AddMapper(this IServiceCollection services)
+        {
+            return services.AddAutoMapper(Assembly.GetCallingAssembly());
         }
 
         private static IServiceCollection DatabaseConnectionConfiguration(this IServiceCollection services, IConfiguration configuration)

@@ -17,11 +17,11 @@ namespace AuctionSite.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterUserBindingModel registerBindingModel)
+        public async Task<IActionResult> Register([FromBody] RegisterUserBindingModel registerBindingModel)
         {
             var result = await _registerUserLogic.ExecuteAsync(registerBindingModel);
 
-            return CreateResponse<long>(result);
+            return CreateResponse(result);
         }
 
         [HttpPost("login/facebook")]
