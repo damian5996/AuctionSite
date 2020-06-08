@@ -17,6 +17,8 @@
             public const string EmailExistsTemplate = "User with email '{0}' already exists! Choose another email or try log in via Facebook/Google :)";
             public const string UsernameExistsTemplate = "User with username '{0}' already exists!";
 
+            public const string EmailWrongFormat = "Email has a wrong format";
+
             public const string PasswordNotComplex = "Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character";
         }
 

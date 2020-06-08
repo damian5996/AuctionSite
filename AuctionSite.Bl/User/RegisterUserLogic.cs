@@ -34,6 +34,7 @@ namespace AuctionSite.BL.User
 
             new IValidator<RegisterUserBindingModel>[]
             {
+                new EmailValidator(),
                 new UserExistenceValidator(UnitOfWork),
                 new PasswordValidator()
             };
