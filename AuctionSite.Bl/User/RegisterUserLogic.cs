@@ -34,17 +34,27 @@ namespace AuctionSite.BL.User
 
             new IValidator<RegisterUserBindingModel>[]
             {
-                new EmailValidator(),
+                new EmailFormatValidator(),
                 new UserExistenceValidator(UnitOfWork),
                 new PasswordValidator()
             };
 
         protected override async Task<UserDto> ExecutionAsync(RegisterUserBindingModel registerUserBindingModel)
         {
+            var userDto = MapUser(registerUserBindingModel);
+
+            await UnitOfWork.User.AddUser(userDto);
+            return userDto;
+        }
+
+        private UserDto MapUser(RegisterUserBindingModel registerUserBindingModel)
+        {
             var user = Mapper.Map<UserDto>(registerUserBindingModel);
             user.PasswordHash = GetHash(registerUserBindingModel.Password);
             user.Role = Role.User;
-            await UnitOfWork.User.AddUser(user);
+            user.RecoveryGuid = Guid.NewGuid();
+            user.CreationDate = DateTime.UtcNow;
+
             return user;
         }
 

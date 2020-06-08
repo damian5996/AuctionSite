@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace AuctionSite.BL.User.Validators
 {
-    public class EmailValidator : IValidator<RegisterUserBindingModel>
+    public class EmailFormatValidator : IValidator<RegisterUserBindingModel>
     {
         public void Validate(RegisterUserBindingModel registerUserBindingModel)
         {
