@@ -11,7 +11,7 @@ namespace AuctionSite.DataAccess.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleNames { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public short FailedLoginAttempts { get; set; }
         public Guid? RecoveryGuid { get; set; }
         public string Username { get; set; }

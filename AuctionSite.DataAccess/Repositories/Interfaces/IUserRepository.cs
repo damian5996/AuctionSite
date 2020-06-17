@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using AuctionSite.DataAccess.Model;
 using AuctionSite.Shared.Dto;
 
 namespace AuctionSite.DataAccess.Repositories.Interfaces
@@ -6,8 +8,7 @@ namespace AuctionSite.DataAccess.Repositories.Interfaces
     public interface IUserRepository
     {
         Task<UserDto> GetByEmailOrDefaultAsync(string email);
-        bool WithThisEmailExists(string email);
-        bool WithThisUsernameExists(string username);
-        Task<int> AddUser(UserDto userDto);
+        IQueryable<UserDto> GetAll();
+        Task<bool> AddUser(UserDto userDto);
     }
 }

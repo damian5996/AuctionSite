@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.User
 {
-    internal class RegisterUserLogic : BaseBusinessLogic<RegisterUserBindingModel, UserDto, RegisterUserViewModel>, IRegisterUserLogic
+    internal class RegisterUserLogic : BaseBusinessLogic<RegisterUserBindingModel, bool, bool>, IRegisterUserLogic
     {
         public RegisterUserLogic(
             IUnitOfWork unitOfWork,
@@ -34,23 +34,21 @@ namespace AuctionSite.BL.User
 
             new IValidator<RegisterUserBindingModel>[]
             {
-                new EmailFormatValidator(),
-                new UserExistenceValidator(UnitOfWork),
+                new UserUniquenessValidator(UnitOfWork),
                 new PasswordValidator()
             };
 
-        protected override async Task<UserDto> ExecutionAsync(RegisterUserBindingModel registerUserBindingModel)
+        protected override async Task<bool> ExecutionAsync(RegisterUserBindingModel registerUserBindingModel)
         {
             var userDto = MapUser(registerUserBindingModel);
 
-            await UnitOfWork.User.AddUser(userDto);
-            return userDto;
+            return await UnitOfWork.User.AddUser(userDto);
         }
 
         private UserDto MapUser(RegisterUserBindingModel registerUserBindingModel)
         {
             var user = Mapper.Map<UserDto>(registerUserBindingModel);
-            user.PasswordHash = GetHash(registerUserBindingModel.Password);
+            user.PasswordHash = registerUserBindingModel.Password.GetHash();
             user.Role = Role.User;
             user.RecoveryGuid = Guid.NewGuid();
             user.CreationDate = DateTime.UtcNow;
@@ -58,20 +56,7 @@ namespace AuctionSite.BL.User
             return user;
         }
 
-        private string GetHash(string password)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-  
-                StringBuilder stringbuilder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    stringbuilder.Append(bytes[i].ToString("x2"));
-                }
-                return stringbuilder.ToString();
-            }
-        }
+        
 
     }
 }

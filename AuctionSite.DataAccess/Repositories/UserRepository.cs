@@ -25,6 +25,11 @@ namespace AuctionSite.DataAccess.Repositories
             return _mapper.Map<UserDto>(await _db.User.FirstOrDefaultAsync(user => user.Email == email));
         }
 
+        public IQueryable<UserDto> GetAll()
+        {
+            return _mapper.ProjectTo<UserDto>(_db.User.AsQueryable());
+        }
+
         public bool WithThisEmailExists(string email)
         {
             return _db.User.Any(user => user.Email == email);
@@ -35,17 +40,12 @@ namespace AuctionSite.DataAccess.Repositories
             return _db.User.Any(user => user.Username == username);
         }
 
-        public async Task<int> AddUser(UserDto userDto)
+        public async Task<bool> AddUser(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
             await _db.User.AddAsync(user);
 
-            return await _db.SaveChangesAsync();
-        }
-
-        private async Task<int> SaveAsync()
-        {
-            return await _db.SaveChangesAsync();
+            return await _db.SaveChangesAsync() > 0;
         }
     }
 }

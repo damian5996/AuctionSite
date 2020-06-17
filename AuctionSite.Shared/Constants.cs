@@ -20,6 +20,8 @@
             public const string EmailWrongFormat = "Email has a wrong format";
 
             public const string PasswordNotComplex = "Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character";
+
+            public const string PhoneNumberIncorrectFormat = "Phone number has incorrect format";
         }
 
         public static class Configuration
@@ -28,9 +30,11 @@
             public const string FacebookApiConfigurationRoot = "facebook-api-configuration";
         }
 
-        public static class Other
+        public static class BindingModelValidation
         {
             public const string PasswordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}";
+
+            public const string PhoneNumberRegex = @"(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)";
         }
     }
 }

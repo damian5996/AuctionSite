@@ -32,7 +32,7 @@ namespace AuctionSite.DataAccess.Model.EntityConfig
 
             builder
                 .Property(user => user.BirthDate)
-                .IsRequired(false);
+                .IsRequired();
 
             builder
                 .Property(user => user.FailedLoginAttempts)

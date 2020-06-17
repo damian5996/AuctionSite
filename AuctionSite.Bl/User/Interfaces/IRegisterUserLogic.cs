@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.User.Interfaces
 {
-    public interface IRegisterUserLogic : IBusinessLogic<RegisterUserBindingModel, RegisterUserViewModel>
+    public interface IRegisterUserLogic : IBusinessLogic<RegisterUserBindingModel, bool>
     {
     }
 }

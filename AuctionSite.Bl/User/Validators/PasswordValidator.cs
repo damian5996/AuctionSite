@@ -15,7 +15,7 @@ namespace AuctionSite.BL.User.Validators
     {
         public void Validate(RegisterUserBindingModel registerUserBindingModel)
         {
-            var correctPassword = Regex.IsMatch(registerUserBindingModel.Password, Constants.Other.PasswordRegex);
+            var correctPassword = Regex.IsMatch(registerUserBindingModel.Password, Constants.BindingModelValidation.PasswordRegex);
 
             if (!correctPassword)
                 throw new BusinessLogicException(Constants.Error.PasswordNotComplex, ExceptionType.BadRequest);

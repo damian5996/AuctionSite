@@ -24,7 +24,7 @@ namespace AuctionSite.BL.User.Internal
             {
                 throw new BusinessLogicException(
                     string.Format(Constants.Error.NotFoundTemplate, nameof(_unitOfWork.User), email),
-                    ExceptionType.NotFound);
+                    ExceptionType.BadRequest);
             }
 
             return userDto;
