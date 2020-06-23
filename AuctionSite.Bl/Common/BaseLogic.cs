@@ -50,7 +50,7 @@ namespace AuctionSite.BL.Common
                 return new ResultViewModel<TResult>
                 {
                     Error = Constants.Error.Default,
-                    ExceptionType = ExceptionType.Unauthorized
+                    ExceptionType = ExceptionType.Forbidden
                 };
             }
             catch (Exception ex)
