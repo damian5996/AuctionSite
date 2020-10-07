@@ -1,4 +1,5 @@
-﻿using AuctionSite.Shared.Dto;
+﻿using AuctionSite.Shared.BindingModel;
+using AuctionSite.Shared.Dto;
 using Microsoft.Extensions.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -17,25 +18,21 @@ namespace AuctionSite.BL.Common.Services
             _configuration = configuration;
         }
 
-        public void SendMessage()
+        public void SendMessage(RegisterUserBindingModel userModel)
         {
             var apiKey = _configuration.GetSection("send-grid-api-key").GetSection("Default").Value;
             var client = new SendGridClient(apiKey);
 
             var msg = new SendGridMessage();
 
-            msg.SetFrom(new EmailAddress("damianjacyna59@gmail.com", "Your Auction Site Team"));
+            msg.SetFrom(new EmailAddress("damian.jacyna@billennium.com", "Auction Site Team"));
 
-            //var recipients = new List<EmailAddress>
-            //{
-            //    new EmailAddress("damianjacyna59@gmail.com", "Damian Jacyna")
-            //};
             var messageDto = new EmailMessageDto()
             {
-                Content = "Hej, to jest treść mojego emaila!",
-                Email = "damian.jacyna@billennium.com",
-                FullName = "Damian Jacyna z Billennium",
-                Subject = "Temat emaila"
+                Content = CreateContent(userModel.Email, userModel.FirstName),
+                Email = userModel.Email,
+                FirstName = userModel.FirstName,
+                Subject = "Auction Site - link weryfikacyjny"
             };
 
             CreateMessage(msg, messageDto);
@@ -43,9 +40,27 @@ namespace AuctionSite.BL.Common.Services
             client.SendEmailAsync(msg);
         }
 
+        private string CreateContent(string email, string name)
+        {
+            var content = $@"<h3>Hej Damian</h3>
+                        Nawet nie masz pojęcia jak bardzo cieszymy się, że chcesz założyć konto na naszym portalu! :) <br><br>
+
+                        Kliknij w poniższy link, aby zweryfikować swoje konto <br>
+                        Link
+                        <br><br>
+                        Pozdrawiamy! <br>
+                        Auction Site Team";
+            return content;
+        }
+
+        private string CreateActivationLink()
+        {
+            throw new NotImplementedException();
+        }
+
         private void CreateMessage(SendGridMessage messageObject, EmailMessageDto emailMessageDto)
         {
-            messageObject.AddTo(new EmailAddress(emailMessageDto.Email, emailMessageDto.FullName));
+            messageObject.AddTo(new EmailAddress(emailMessageDto.Email));
 
             messageObject.SetSubject(emailMessageDto.Subject);
 

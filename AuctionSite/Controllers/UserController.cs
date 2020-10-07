@@ -1,5 +1,6 @@
 ﻿using AuctionSite.BL.Common.Services;
 using AuctionSite.BL.User.Interfaces;
+using AuctionSite.BL.User;
 using AuctionSite.Shared.BindingModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -19,10 +20,11 @@ namespace AuctionSite.Api.Controllers
             _emailService = emailService;
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserBindingModel registerBindingModel)
         {
-            var result = await _registerUserLogic.ExecuteAsync(registerBindingModel);
+            var result = await _registerUserLogic.ExecuteAsync<RegisterUserLogic>(registerBindingModel);
+            _emailService.SendMessage(registerBindingModel);
 
             return CreateResponse(result);
         }
@@ -30,14 +32,14 @@ namespace AuctionSite.Api.Controllers
         [HttpPost("login/facebook")]
         public async Task<IActionResult> FacebookLoginAsync([FromBody] FacebookLoginBindingModel facebookLoginBindingModel)
         {
-            var result = await _userFacebookAuthenticationBusinessLogic.ExecuteAsync(facebookLoginBindingModel);
+            var result = await _userFacebookAuthenticationBusinessLogic.ExecuteAsync<UserFacebookAuthenticationLogic>(facebookLoginBindingModel);
             return CreateResponse(result);
         }
 
         [HttpPost("sendEmailTest")]
         public IActionResult SendEmailTest()
         {
-            _emailService.SendMessage();
+            //_emailService.SendMessage();
             return Ok();
         }
     }

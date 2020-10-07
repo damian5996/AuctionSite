@@ -17,7 +17,7 @@ using AuctionSite.Shared.Exceptions;
 
 namespace AuctionSite.BL.User
 {
-    internal class UserFacebookAuthenticationLogic : BaseBusinessLogic<FacebookLoginBindingModel, TokenDto, TokenViewModel>, IUserFacebookAuthenticationLogic
+    public class UserFacebookAuthenticationLogic : BaseBusinessLogic<FacebookLoginBindingModel, TokenDto, TokenViewModel>, IUserFacebookAuthenticationLogic
     {
         private readonly IFacebookApiRepository _facebookApiRepository;
         private readonly GetUserByEmail _getUserByEmail;

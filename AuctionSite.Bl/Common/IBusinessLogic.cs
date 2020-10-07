@@ -5,7 +5,7 @@ namespace AuctionSite.BL.Common
 {
     public interface IBusinessLogic<in TParam, TResult>
     {
-        Task<ResultViewModel<TResult>> ExecuteAsync(TParam parameter);
+        Task<ResultViewModel<TResult>> ExecuteAsync<TLogic>(TParam parameter);
     }
 
     public interface IBusinessLogic<TResult> 
