@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace AuctionSite.BL.User
 {
-    internal class RegisterUserLogic : BaseBusinessLogic<RegisterUserBindingModel, bool, bool>, IRegisterUserLogic
+    public class RegisterUserLogic : BaseBusinessLogic<RegisterUserBindingModel, bool, bool>, IRegisterUserLogic
     {
         public RegisterUserLogic(
             IUnitOfWork unitOfWork,

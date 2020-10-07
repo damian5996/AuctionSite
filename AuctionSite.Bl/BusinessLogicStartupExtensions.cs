@@ -1,4 +1,5 @@
-﻿using AuctionSite.BL.User;
+﻿using AuctionSite.BL.Common.Services;
+using AuctionSite.BL.User;
 using AuctionSite.BL.User.Interfaces;
 using AuctionSite.DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -21,7 +22,8 @@ namespace AuctionSite.BL
         {
             return services
                 .AddScoped<IUserFacebookAuthenticationLogic, UserFacebookAuthenticationLogic>()
-                .AddScoped<IRegisterUserLogic, RegisterUserLogic>();
+                .AddScoped<IRegisterUserLogic, RegisterUserLogic>()
+                .AddScoped<EmailService>();
         }
 
         public static IApplicationBuilder BusinessLogicConfigure(this IApplicationBuilder app)
