@@ -29,7 +29,7 @@ namespace AuctionSite.BL.Common.Services
 
             var messageDto = new EmailMessageDto()
             {
-                Content = CreateContent(userModel.Email, userModel.FirstName),
+                Content = CreateContent(userModel.FirstName),
                 Email = userModel.Email,
                 FirstName = userModel.FirstName,
                 Subject = "Auction Site - link weryfikacyjny"
@@ -40,9 +40,9 @@ namespace AuctionSite.BL.Common.Services
             client.SendEmailAsync(msg);
         }
 
-        private string CreateContent(string email, string name)
+        private string CreateContent(string name)
         {
-            var content = $@"<h3>Hej Damian</h3>
+            var content = $@"<h3>Hej {name}</h3>
                         Nawet nie masz pojęcia jak bardzo cieszymy się, że chcesz założyć konto na naszym portalu! :) <br><br>
 
                         Kliknij w poniższy link, aby zweryfikować swoje konto <br>
